@@ -1,0 +1,48 @@
+{
+  "useprotocol": "http",
+  "cse": {
+    "cbhost": "40.69.84.142",
+    "cbport": "7579",
+    "cbname": "Mobius",
+    "cbcseid": "/Mobius",
+    "mqttport": "1883"
+  },
+  "ae": {
+    "aeid": "S",
+    "appid": "0.2.481.1.1",
+    "appname": "neowine",
+    "appport": "9727",
+    "bodytype": "xml",
+    "tasport": "3105"
+  },
+  "cnt": [
+    {
+      "parentpath": "/neowine",
+      "ctname": "raspberryPi-in"
+    },
+    {
+      "parentpath": "/neowine",
+      "ctname": "raspberryPi-out"
+    },
+    {
+      "parentpath": "/neowine",
+      "ctname": "arduino-in"
+    },
+    {
+      "parentpath": "/neowine",
+      "ctname": "arduino-out"
+    }
+  ],
+  "sub": [
+    {
+      "parentpath": "/neowine/arduino-in",
+      "subname": "sub-ctrl",
+      "nu": "mqtt://AUTOSET"
+    },
+    {
+      "parentpath": "/neowine/raspberryPi-in",
+      "subname": "sub-ctrl",
+      "nu": "mqtt://AUTOSET"
+    }
+  ]
+}
