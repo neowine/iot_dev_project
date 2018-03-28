@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DORCA-3 demo with MOBIUS</string>
+    <string name="app_name">DORCA-3 demo with MOBIUS V 1.0</string>
     <string name="tab_text_1">Log In</string>
     <string name="tab_text_2">IoT Control</string>
     <string name="tab_text_3">Admin</string>

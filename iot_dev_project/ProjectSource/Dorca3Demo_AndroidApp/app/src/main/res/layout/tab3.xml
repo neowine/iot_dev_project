@@ -4,7 +4,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.siamenock.tabactivityexample.MainActivity$PlaceholderFragment">
+    tools:context="com.example.siamenock.tabactivityexample.com.neowine.siamenock.tabactivityexample.MainActivity$PlaceholderFragment">
 
     <LinearLayout
         android:id="@+id/linearLayoutMain"
@@ -22,7 +22,7 @@
 
 
             <TextView
-                android:id="@+id/section_label4"
+                android:id="@+id/section_label4-2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -85,7 +85,7 @@
 
 
             <TextView
-                android:id="@+id/section_label4"
+                android:id="@+id/section_label4_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
