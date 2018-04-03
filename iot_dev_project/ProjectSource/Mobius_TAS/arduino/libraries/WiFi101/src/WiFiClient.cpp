@@ -19,11 +19,6 @@
 
 #include "utility/WiFiSocket.h"
 
-extern "C" {//
-#include "socket/include/socket.h"
-#include "driver/include/m2m_periph.h"
-}
-
 #include "WiFi101.h"
 #include "WiFiClient.h"
 

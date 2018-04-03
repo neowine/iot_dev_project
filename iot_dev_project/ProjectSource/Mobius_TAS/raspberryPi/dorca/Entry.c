@@ -186,38 +186,39 @@ unsigned int NumOfIterMain = 1;
 #define LOGE(...)	printf(__VA_ARGS__)
 #define SPI0_SPEED 1000*1000
 #define SPI1_SPEED 500*1000
+#define POWER 12
 void PowerOn()
 {
 #ifndef ETRY_CODE
 
-	export(26);
+	export(POWER);
 	export(19); 		
 	export(8);
 	export(7);			
 	
 	printf("export");
-	direction(26,1);
+	direction(POWER,1);
 	direction(19,1);			
 	direction(8,1); 			
 	direction(7,1); 
 	printf("\r\n Clear ALL");
-	write_val(26,0);
+	write_val(POWER,0);
 	write_val(19,0);			
 	write_val(8,0); 			
 	write_val(7,0); 			
 	usleep(300*1000);
 	printf("\r\n Power On");
-	write_val(26,1);;
+	write_val(POWER,1);;
 	usleep(300*1000);
 
 	printf("\r\n Clear ALL");
-	write_val(26,0);
+	write_val(POWER,0);
 	write_val(19,0);			
 	write_val(8,0); 			
 	write_val(7,0); 			
 	usleep(300*1000);
 	printf("\r\n Power On");
-	write_val(26,1);;
+	write_val(POWER,1);;
 #endif
 }
 

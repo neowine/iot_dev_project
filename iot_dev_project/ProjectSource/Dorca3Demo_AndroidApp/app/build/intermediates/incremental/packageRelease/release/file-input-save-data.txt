@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Wed Mar 21 09:34:58 KST 2018
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\SPSHIN_WINDOW10\\Downloads\\000_FINAL_Dorca3Demo\\Dorca3Demo\\ProjectSource\\Dorca3Demo_AndroidApp\\app\\build\\intermediates\\transforms\\dex\\release\\0
+0.path=classes.dex
+0.set=DEX
+count=1

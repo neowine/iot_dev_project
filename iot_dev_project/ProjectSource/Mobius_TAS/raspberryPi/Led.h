@@ -4,9 +4,9 @@
 #include "stdafx.h"
 #include "Module.h"
 
-#define LED_R 16
-#define LED_G 20
-#define LED_B 21
+#define LED_R 18
+#define LED_G 23
+#define LED_B 24
 
 class Led :
 	public Module {

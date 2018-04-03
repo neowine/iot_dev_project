@@ -22,10 +22,16 @@
 #define PW "98080753"
 
 #else
+//#define CT_NAME "arduino-"
+
+//#define SSID "spshin"
+//#define PW "12345678"
+
 #define CT_NAME "arduino-"
 
-#define SSID "spshin"
-#define PW "12345678"
+#define SSID "neooffice01"
+#define PW "neowine01"
+
 #endif
 int count = 0;
 #define SW_PIN 11

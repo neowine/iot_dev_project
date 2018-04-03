@@ -22,7 +22,11 @@ void* contRunThread (void* con);
 int main() {
 	wiringPiSetupGpio();	
 	Module* con;
-
+	digitalWrite(LED_R, 0);
+	digitalWrite(LED_R, 1);
+	sleep(2);
+	cout <<"init tas";
+	digitalWrite(LED_R, 0);
 	//--------------------------------------------------------------------------------------------------//for test (test key)
 	Dorca::getInstance()->setKey("000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f");
 	Dorca::getInstance()->setEncryptType(RG_AES, 32);

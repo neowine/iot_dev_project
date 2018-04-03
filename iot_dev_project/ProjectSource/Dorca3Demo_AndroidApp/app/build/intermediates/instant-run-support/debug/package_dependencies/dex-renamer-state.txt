@@ -1,0 +1,4 @@
+#Thu Mar 29 08:25:40 KST 2018
+base.0=C\:\\Users\\SPSHIN_WINDOW10\\Downloads\\000_FINAL_Dorca3Demo\\Dorca3Demo\\ProjectSource\\Dorca3Demo_AndroidApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
+path.0=classes.dex
+renamed.0=classes.dex
