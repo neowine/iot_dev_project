@@ -5512,60 +5512,6 @@ L_MIDR_START:
 
 int GetSuperWirePermission(void)
 {
-	int i;
-	int success = 1;
-	unsigned int inst = 0;
-	int PERM_TYPE = 0;
-	//unsigned char addr[2];
-	unsigned char tx_data[64];
-	unsigned char rx_data[64];
-	int j = 0;
-	unsigned char temp_addr[2];
-	int k = 0;
-	unsigned char SUPER_WIRE_PW[16] = { 0xC3,0x95,0xFA,0x2D,0x72,0x31,0x0B,0xE7,0x56,0xA9,0x06,0x18,0x78,0xCA,0x92,0x3F};
-	//return;
-	for(i = 0; i < 64; i++)
-	{
-		tx_data[i] = 0;
-		rx_data[i] = 0;
-	}
-	for( k = 0; k < 10 ; k++)
-	{
-		j = 15;
-
-		for(i = 0; i < 16 ;i++)
-			tx_data[i] = SUPER_WIRE_PW[j--];
-
-		//	tx_data[0] = 0x0C;	
-		//	tspi_interface(cs, ADDR_NOR_W, RG_ST0_OPMODE , NULL, NULL, NULL, NULL, tx_data, rx_data, 1);		
-		//	delay_ms(16);
-
-		tspi_interface(cs, ADDR_NOR_W, RG_SUPER_WIRE_PW0 , NULL, NULL, NULL, NULL, tx_data, rx_data, 16);			
-
-#if 1
-		PRINTLOG("\r\n\n");
-		PRINTLOG("\r\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		PRINTLOG("\r\n==      RG_PERM_GET_CTRL1                           ==");
-		PRINTLOG("\r\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-#endif 	
-		tx_data[0] = 0x0;	
-		tspi_interface(cs, ADDR_NOR_R, RG_PERM_GET_CTRL1 , NULL, NULL, NULL, NULL, tx_data, rx_data, 1);	
-		PRINTLOG("\r\n GetPermResult 0x%02x",rx_data[0]);
-		Serial.println("\r\n GetPermResult");		
-		Serial.println(rx_data[0],HEX);				
-		if(rx_data[0] & (1<<6))
-			break;
-	}
-	if(rx_data[0] & (1<<6))
-	{
-		Serial.println("\r\n SUCCESS TO GET RG_SUPER_WIRE_PW0");
-	}
-	else
-	{
-		Serial.println("\r\n NOT SUCCESS TO GET RG_SUPER_WIRE_PW0");
-		success = 0;
-	}
-	return success;
 
 }
 void ReadKEYAES_X()
@@ -9223,7 +9169,7 @@ int DecWrite(int AES_ARIA)
 		}	
 	}
 #if 1
-#if 0 // CASE 1 KEYLOAD�??�번 ?�행?�면 UID PERM?�어지�?AES_CUR??1?�된??
+#if 0 // CASE 1 KEYLOADë¥??ë² ?í?ë©´ UID PERM?»ì´ì§ê³?AES_CUR??1?´ë??
 	//	printk("\r\n -----------------------------SetKEYNormal------------------------------");
 
 #if 1	
@@ -9236,7 +9182,7 @@ int DecWrite(int AES_ARIA)
 #endif
 #endif
 	//SetKEYNormal();
-#if 0// CASE 2 PERMISSION???�번 ?�어?�면 ???
+#if 0// CASE 2 PERMISSION???ë² ?»ì´?¤ë©´ ???
 	GetPermissionByPW(UID_PW_CT, RG_PERM_UID_PASS);
 	ReleasePermision();
 
@@ -14926,7 +14872,7 @@ int RSCreate12(void)
 	tspi_interface(cs, ADDR_NOR_W,RG_ST3_SYMCIP_RSCREATE_OPMODE         , NULL, NULL, NULL, NULL, tx_data, rx_data, 1);
 	
 	//	Delay_ms(6000);
-	//////{{ ADD 2017-08-10 LED불을 켰다 ?�기?�한 코드 
+	//////{{ ADD 2017-08-10 LEDë¶ì ì¼°ë¤ ?ê¸°?í ì½ë 
 	//	printk("\r\n ADD 2017-08-10 CODE FOR LED BLINKING OFF");
 	//	tx_data[0] = 0x02;
 	//	tspi_interface(cs, ADDR_NOR_W,RG_FFFF 		, NULL, NULL, NULL, NULL, tx_data, rx_data, 1);
@@ -21599,7 +21545,7 @@ int TAESM241_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TAESM241_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21655,7 +21601,7 @@ int TARIAM110_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM110_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21710,7 +21656,7 @@ int TARIAM111_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM111_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21766,7 +21712,7 @@ int TARIAM120_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM120_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21823,7 +21769,7 @@ int TARIAM121_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM121_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21879,7 +21825,7 @@ int TARIAM130_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM130_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21935,7 +21881,7 @@ int TARIAM131_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM131_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -21991,7 +21937,7 @@ int TARIAM140_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM140_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -22047,7 +21993,7 @@ int TARIAM141_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM141_S ================================== ");
 	memset(KEY32,0,32);
 	//hexstr2bytes("1f352c073b6108d72d9810a30914dff4", KEY32);
@@ -22103,7 +22049,7 @@ int TARIAM210_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM210_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22159,7 +22105,7 @@ int TARIAM211_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM141_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22215,7 +22161,7 @@ int TARIAM220_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM220_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22271,7 +22217,7 @@ int TARIAM221_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM220_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22327,7 +22273,7 @@ int TARIAM230_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM230_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22383,7 +22329,7 @@ int TARIAM231_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM231_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22440,7 +22386,7 @@ int TARIAM240_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM240_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22496,7 +22442,7 @@ int TARIAM241_S()
 	unsigned char CYPER_TEXT_REV[16*4];
 	unsigned char DEC_CYPER_TEXT_REV[16*4];
 	unsigned char IV_REV[16];	
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TARIAM241_S ================================== ");
 	memset(KEY32,0,32);
 	hexstr2bytes("00112233445566778899aabbccddeeff", KEY32);
@@ -22689,7 +22635,7 @@ int TCOMM001_S()
 	int CNT_ENC_OUT_CBC =0;
 
 
-	unsigned char KEY32[32] ;//?��??�력 깔보�? 
+	unsigned char KEY32[32] ;//?ê??ë ¥ ê¹ë³´ê´? 
 	printk("\r\n ================================== TCOMM001_S ================================== ");
 	hexstr2bytes("00000000000000000000000000000000", KEY32);
 	hexstr2bytes("000102030405060708090A0B0C0D0E0F", KEY32+16);	
